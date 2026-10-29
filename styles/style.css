@@ -1,105 +1,99 @@
 
-/* Campus Bites Feedback Page */
+/* How to Order Page */
 
-.site-header {
-    background-color: #e67e22;
-    color: white;
+.order-page {
+    padding-top: 30px;
+    padding-bottom: 40px;
+}
+
+.order-hero {
     text-align: center;
-    padding: 25px;
+    padding: 35px 20px;
+    margin-bottom: 30px;
+    background-color: #fff3e0;
+    border-radius: 12px;
 }
 
-.site-header h1 {
-    margin: 0;
+.order-hero h2 {
+    color: #8b4513;
+    margin-bottom: 12px;
 }
 
-.navbar {
-    background-color: #333;
+.order-steps,
+.order-guidelines {
+    margin-bottom: 35px;
+}
+
+.order-steps > h2,
+.order-guidelines > h2,
+.order-help h2 {
+    color: #8b4513;
+    margin-bottom: 20px;
+}
+
+.order-card,
+.guideline-card {
+    background-color: #ffffff;
+    padding: 22px;
+    margin-bottom: 18px;
+    border: 1px solid #eadfD2;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+}
+
+.order-card h3,
+.guideline-card h3 {
+    color: #a0522d;
+    margin-bottom: 10px;
+}
+
+.guideline-card ul {
+    padding-left: 22px;
+}
+
+.guideline-card li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.order-help {
     text-align: center;
-    padding: 15px;
+    padding: 30px 20px;
+    background-color: #f7f7f7;
+    border-radius: 12px;
 }
 
-.navbar a {
+.order-button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 22px;
+    background-color: #8b4513;
     color: white;
     text-decoration: none;
-    margin: 10px;
-    display: inline-block;
+    border-radius: 6px;
 }
 
-.navbar a:hover {
-    color: orange;
-}
-
-.container {
-    width: 85%;
-    max-width: 750px;
-    margin: 30px auto;
-}
-
-.contact-section,
-.feedback-section {
-    background-color: white;
-    padding: 22px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px #ddd;
-}
-
-.contact-section h2,
-.feedback-section h2 {
-    color: #e67e22;
-}
-
-.feedback-section label {
-    display: block;
-    margin-top: 15px;
-    font-weight: bold;
-}
-
-.feedback-section input,
-.feedback-section textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 6px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
-.feedback-section button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 18px;
-    background-color: #e67e22;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.feedback-section button:hover {
-    background-color: #ca6f1e;
-}
-
-.site-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 12px;
+.order-button:hover {
+    background-color: #65320e;
 }
 
 /* Responsive design */
-@media (max-width: 600px) {
-    .container {
-        width: 92%;
+@media (max-width: 768px) {
+    .order-page {
+        padding: 20px 14px;
     }
 
-    .navbar a {
-        margin: 5px;
+    .order-hero {
+        padding: 25px 15px;
     }
 
-    .contact-section,
-    .feedback-section {
-        padding: 15px;
+    .order-card,
+    .guideline-card {
+        padding: 16px;
+    }
+
+    .order-button {
+        display: block;
+        text-align: center;
     }
 }
