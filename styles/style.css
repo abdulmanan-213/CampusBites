@@ -1,2473 +1,1510 @@
-/* ===== Google Font ===== */
 
+/* =====================================================
+   CAMPUS BITES - COMPLETE WEBSITE STYLESHEET
+   Pages: Home, Menu, Deals, Order, Feedback
+   Theme: Modern, Warm, Clean and Responsive
+===================================================== */
+
+/* ==================== 1. GOOGLE FONT ==================== */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 
-
-
-/* ===== General Styles ===== */
-
-* {
-
-    margin: 0;
-
-    padding: 0;
-
-    box-sizing: border-box;
-
-}
-
-
-
-html {
-
-    scroll-behavior: smooth;
-
-}
-
-
-
-body {
-
-    font-family: 'Poppins', sans-serif;
-
-    background-color: #fffdf9;
-
-    color: #292820;
-
-    line-height: 1.7;
-
-}
-
-
-
-a {
-
-    text-decoration: none;
-
-    color: inherit;
-
-}
-
-
-
+/* ==================== 2. ROOT VARIABLES ==================== */
 :root {
+    --primary: #e66b3d;
+    --primary-dark: #c94f27;
+    --primary-light: #fff0e8;
 
-    --primary: #d95d35;
-
-    --primary-dark: #b94320;
-
-    --cream: #fff4e6;
-
-    --dark: #292820;
-
-    --muted: #77756e;
-
+    --secondary: #f5b942;
+    --cream: #fffaf4;
     --white: #ffffff;
 
+    --dark: #29251f;
+    --text: #5e5952;
+    --muted: #8c867e;
+
+    --border: #eee5dc;
+    --shadow: 0 10px 30px rgba(48, 36, 25, 0.08);
+    --shadow-hover: 0 18px 40px rgba(48, 36, 25, 0.13);
+
+    --radius: 16px;
+    --transition: 0.3s ease;
 }
 
+/* ==================== 3. GLOBAL RESET ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
 
-/* ===== Navigation Header ===== */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--cream);
+    color: var(--dark);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.container,
+.deals-container {
+    width: min(1150px, 90%);
+    margin: 0 auto;
+}
+
+/* ==================== 4. SHARED HEADER / NAVIGATION ==================== */
+/* Use the same <header class="navbar"> markup on all five pages. */
+.navbar {
+    width: 100%;
+    min-height: 85px;
+    padding: 18px 7%;
+    background: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    position: relative;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(41, 37, 31, 0.05);
+}
+/* =====================================================
+   SHARED HEADER - ALL WEBSITE PAGES
+===================================================== */
 
 .navbar {
-
-    min-height: 86px;
-
-    padding: 18px 6%;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 30px;
-
-    background: var(--white);
-
-    border-bottom: 1px solid #f1ede7;
-
-    position: sticky;
-
-    top: 0;
-
-    z-index: 1000;
-
-    box-shadow: 0 3px 15px rgba(41, 40, 32, 0.035);
-
-}
-
-
-
-/* Logo */
-
-.logo {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 5px;
-
-    font-size: 25px;
-
-    font-weight: 800;
-
-    letter-spacing: -1px;
-
-    white-space: nowrap;
-
-    flex-shrink: 0;
-
-}
-
-
-
-.logo > span:last-child {
-
-    color: var(--primary);
-
-}
-
-
-
-.logo-icon {
-
-    font-size: 27px;
-
-    margin-right: 4px;
-
-}
-
-
-
-/* Navigation Links */
-
-.nav-links {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: flex-end;
-
-    flex-wrap: wrap;
-
-    gap: 23px;
-
-}
-
-
-
-.nav-links a {
-
-    position: relative;
-
-    display: inline-flex;
-
-    align-items: center;
-
-    padding: 9px 0;
-
-    font-size: 12px;
-
-    font-weight: 600;
-
-    color: #5d5a53;
-
-    transition: color 0.3s ease;
-
-}
-
-
-
-/* Animated Bottom Border */
-
-.nav-links a:not(.login-btn)::after {
-
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-
-    bottom: 2px;
-
-    width: 0;
-
-    height: 2px;
-
-    background: var(--primary);
-
-    border-radius: 5px;
-
-    transition: width 0.3s ease;
-
-}
-
-
-
-.nav-links a:not(.login-btn):hover,
-
-.nav-links a.active {
-
-    color: var(--primary);
-
-}
-
-
-
-.nav-links a:not(.login-btn):hover::after,
-
-.nav-links a.active::after {
-
     width: 100%;
-
-}
-
-
-
-/* Sign In Button */
-
-.nav-links .login-btn {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 11px 23px;
-
-    min-height: 43px;
-
-    background: var(--primary);
-
-    color: var(--white);
-
-    border: 1px solid var(--primary);
-
-    border-radius: 8px;
-
-    font-size: 12px;
-
-    font-weight: 600;
-
-    white-space: nowrap;
-
-    box-shadow: 0 5px 12px rgba(217, 93, 53, 0.14);
-
-    transition: all 0.3s ease;
-
-}
-
-
-
-.nav-links .login-btn:hover {
-
-    background: var(--primary-dark);
-
-    border-color: var(--primary-dark);
-
-    color: var(--white);
-
-    transform: translateY(-2px);
-
-    box-shadow: 0 7px 17px rgba(217, 93, 53, 0.22);
-
-}
-
-
-
-/* ===== Hero Section ===== */
-
-.hero {
-
-    min-height: 620px;
-
-    padding: 75px 8%;
-
-    display: grid;
-
-    grid-template-columns: 1.1fr 0.9fr;
-
-    align-items: center;
-
-    gap: 55px;
-
-    background:
-
-        radial-gradient(
-
-            circle at 90% 10%,
-
-            #ffe4c7 0,
-
-            transparent 35%
-
-        ),
-
-        linear-gradient(135deg, #fff9f0, #fff2e4);
-
-    overflow: hidden;
-
-}
-
-
-
-.hero-content {
-
-    max-width: 600px;
-
-}
-
-
-
-.tagline {
-
-    display: inline-block;
-
-    padding: 9px 15px;
-
-    border-radius: 30px;
-
-    background: #ffe4d6;
-
-    color: #a84224;
-
-    font-size: 11px;
-
-    font-weight: 700;
-
-    letter-spacing: 1px;
-
-    margin-bottom: 23px;
-
-}
-
-
-
-.hero h1 {
-
-    font-size: clamp(42px, 5vw, 67px);
-
-    line-height: 1.2;
-
-    letter-spacing: -2px;
-
-    font-weight: 800;
-
-}
-
-
-
-.hero h1 span {
-
-    color: var(--primary);
-
-}
-
-
-
-.hero-description {
-
-    max-width: 490px;
-
-    color: var(--muted);
-
-    font-size: 14px;
-
-    line-height: 2;
-
-    margin: 23px 0 29px;
-
-}
-
-
-
-.hero-buttons {
-
+    min-height: 85px;
+    padding: 18px 7%;
+    background: #ffffff;
     display: flex;
-
+    justify-content: space-between;
     align-items: center;
-
-    flex-wrap: wrap;
-
-    gap: 14px;
-
+    gap: 25px;
+    position: relative;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(41, 37, 31, 0.05);
 }
 
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    font-weight: 800;
+    color: #29251f;
+    letter-spacing: -1px;
+    white-space: nowrap;
+}
 
+.navbar .logo span:not(.logo-icon) {
+    color: #e66b3d;
+}
+
+.navbar .logo-icon {
+    margin-right: 6px;
+}
+
+.navbar .nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 28px;
+}
+
+.navbar .nav-links a {
+    position: relative;
+    color: #5e5952;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: 0.3s ease;
+}
+
+.navbar .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+    width: 0;
+    height: 2px;
+    background: #e66b3d;
+    transition: width 0.3s ease;
+}
+
+.navbar .nav-links a:hover,
+.navbar .nav-links a.active {
+    color: #e66b3d;
+}
+
+.navbar .nav-links a:hover::after,
+.navbar .nav-links a.active::after {
+    width: 100%;
+}
+
+/* Tablet */
+@media (max-width: 1000px) {
+    .navbar {
+        padding: 18px 4%;
+    }
+
+    .navbar .nav-links {
+        gap: 15px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        justify-content: center;
+        padding: 20px 5%;
+        gap: 18px;
+    }
+
+    .navbar .nav-links {
+        justify-content: center;
+        gap: 14px 20px;
+    }
+
+    .navbar .nav-links a {
+        font-size: 11px;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .navbar .logo {
+        font-size: 22px;
+    }
+
+    .navbar .nav-links {
+        gap: 12px 15px;
+    }
+}
+.navbar .logo,
+.brand,
+.footer-logo {
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    font-weight: 800;
+    color: var(--dark);
+    letter-spacing: -1px;
+    white-space: nowrap;
+}
+
+.navbar .logo > span:not(.logo-icon),
+.brand span,
+.footer-logo span {
+    color: var(--primary);
+}
+
+.navbar .logo-icon {
+    margin-right: 6px;
+}
+
+.navbar .nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 28px;
+}
+
+.navbar .nav-links a {
+    position: relative;
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.navbar .nav-links a:not(.login-btn)::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width var(--transition);
+}
+
+.navbar .nav-links a:not(.login-btn):hover,
+.navbar .nav-links a.active {
+    color: var(--primary);
+}
+
+.navbar .nav-links a:not(.login-btn):hover::after,
+.navbar .nav-links a.active::after {
+    width: 100%;
+}
+
+.navbar .nav-links .login-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 22px;
+    border-radius: 30px;
+    background: var(--primary);
+    color: var(--white);
+    transition: var(--transition);
+}
+
+.navbar .nav-links .login-btn:hover {
+    background: var(--primary-dark);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+/* ==================== 5. COMMON BUTTONS ==================== */
+.primary-btn,
+.secondary-btn,
+.deals-button,
+.order-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 13px 27px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: var(--transition);
+}
 
 .primary-btn,
-
-.secondary-btn {
-
-    display: inline-block;
-
-    padding: 14px 23px;
-
-    border-radius: 9px;
-
-    font-size: 13px;
-
-    font-weight: 600;
-
-    transition: all 0.3s ease;
-
-}
-
-
-
-.primary-btn {
-
+.deals-button,
+.order-button {
     background: var(--primary);
-
     color: var(--white);
-
-    box-shadow: 0 8px 20px rgba(217, 93, 53, 0.18);
-
+    border: none;
 }
 
-
-
-.primary-btn:hover {
-
+.primary-btn:hover,
+.deals-button:hover,
+.order-button:hover {
     background: var(--primary-dark);
-
     transform: translateY(-3px);
-
+    box-shadow: 0 8px 20px rgba(230, 107, 61, 0.25);
 }
-
-
 
 .secondary-btn {
-
-    border: 1px solid #e3d6c8;
-
     background: var(--white);
-
     color: var(--dark);
-
+    border: 1px solid var(--border);
 }
-
-
 
 .secondary-btn:hover {
-
     border-color: var(--primary);
-
     color: var(--primary);
-
-    transform: translateY(-2px);
-
+    transform: translateY(-3px);
 }
 
+/* ==================== 6. HOME PAGE ==================== */
+.hero {
+    min-height: 650px;
+    padding: 80px 8%;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 60px;
+    background: linear-gradient(135deg, #fff8ef, #ffede0);
+}
 
+.hero-content {
+    max-width: 620px;
+    animation: slideUp 0.8s ease;
+}
+
+.tagline,
+.section-label {
+    display: inline-block;
+    color: var(--primary);
+    background: var(--primary-light);
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(40px, 5vw, 66px);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -2px;
+    margin-bottom: 22px;
+}
+
+.hero h1 span {
+    color: var(--primary);
+}
+
+.hero-description {
+    max-width: 520px;
+    color: var(--text);
+    font-size: 15px;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
 
 .hero-features {
-
     display: flex;
-
     flex-wrap: wrap;
-
-    gap: 25px;
-
-    margin-top: 39px;
-
+    gap: 30px;
+    margin-top: 50px;
 }
-
-
 
 .hero-features div {
-
     display: flex;
-
     flex-direction: column;
-
     gap: 3px;
-
 }
-
-
 
 .hero-features strong {
-
-    font-size: 12px;
-
-    font-weight: 700;
-
+    font-size: 13px;
+    color: var(--dark);
 }
-
-
 
 .hero-features span {
-
     color: var(--muted);
-
-    font-size: 10px;
-
+    font-size: 11px;
 }
-
-
-
-/* ===== Hero Food Image ===== */
 
 .hero-image {
-
-    min-height: 420px;
-
+    min-height: 390px;
     position: relative;
-
-    border-radius: 180px 180px 25px 25px;
-
-    background-image:
-
-        linear-gradient(
-
-            to top,
-
-            rgba(40, 24, 13, 0.2),
-
-            transparent 45%
-
-        ),
-
-        url("https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1000&q=85");
-
-    background-size: cover;
-
-    background-position: center;
-
-    box-shadow: 0 25px 60px rgba(93, 55, 27, 0.15);
-
+    border-radius: 45% 45% 25px 25px;
+    background:
+        radial-gradient(circle at 50% 40%, #ffdc9f 0, #f5a45e 38%, #e66b3d 100%);
+    box-shadow: var(--shadow-hover);
+    overflow: hidden;
 }
 
-
+.hero-image::before {
+    content: '🍔';
+    position: absolute;
+    font-size: clamp(120px, 17vw, 220px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-8deg);
+    filter: drop-shadow(0 20px 15px rgba(0, 0, 0, 0.15));
+}
 
 .image-badge {
-
     position: absolute;
-
     bottom: 25px;
-
-    left: -25px;
-
+    left: 20px;
     display: flex;
-
     align-items: center;
-
-    gap: 13px;
-
-    padding: 16px 21px;
-
+    gap: 12px;
     background: var(--white);
-
-    border-radius: 13px;
-
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
-
+    padding: 13px 20px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
 }
-
-
 
 .image-badge > span {
-
-    font-size: 30px;
-
+    font-size: 25px;
 }
-
-
 
 .image-badge strong {
-
     font-size: 13px;
-
-    font-weight: 700;
-
 }
-
-
 
 .image-badge p {
-
+    font-size: 11px;
     color: var(--muted);
-
-    font-size: 11px;
-
 }
 
-
-
-/* ===== About Section ===== */
-
+/* Home About Section */
 .about-section {
-
-    padding: 90px 8%;
-
+    padding: 100px 8%;
     text-align: center;
-
+    background: var(--white);
 }
-
-
-
-.section-label {
-
-    color: var(--primary);
-
-    font-size: 11px;
-
-    font-weight: 700;
-
-    letter-spacing: 2px;
-
-}
-
-
 
 .about-section h2,
-
-.cta-section h2 {
-
-    font-size: clamp(27px, 3.5vw, 40px);
-
-    line-height: 1.4;
-
+.deals-heading h2,
+.menu-hero h1 {
+    font-size: clamp(30px, 4vw, 42px);
+    font-weight: 800;
     letter-spacing: -1px;
-
-    font-weight: 700;
-
-    margin-top: 13px;
-
+    margin-bottom: 15px;
 }
-
-
 
 .section-description {
-
-    max-width: 750px;
-
-    margin: 18px auto 45px;
-
-    color: var(--muted);
-
-    font-size: 13px;
-
-    line-height: 2;
-
+    max-width: 780px;
+    margin: 0 auto;
+    color: var(--text);
+    font-size: 14px;
 }
-
-
 
 .info-grid {
-
     display: grid;
-
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-
-    gap: 24px;
-
-    text-align: left;
-
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 55px;
 }
-
-
 
 .info-card {
-
-    padding: 30px 25px;
-
-    border: 1px solid #f0e8de;
-
-    border-radius: 15px;
-
-    background: var(--white);
-
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-
+    background: var(--cream);
+    padding: 35px 25px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: var(--transition);
 }
-
-
 
 .info-card:hover {
-
-    transform: translateY(-7px);
-
-    box-shadow: 0 15px 35px rgba(70, 49, 28, 0.08);
-
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary);
 }
-
-
 
 .info-icon {
-
-    width: 55px;
-
-    height: 55px;
-
+    width: 65px;
+    height: 65px;
+    margin: 0 auto 20px;
     display: grid;
-
     place-items: center;
-
-    border-radius: 12px;
-
-    background: var(--cream);
-
-    font-size: 27px;
-
-    margin-bottom: 19px;
-
+    background: var(--primary-light);
+    border-radius: 50%;
+    font-size: 28px;
 }
-
-
 
 .info-card h3 {
-
-    font-size: 16px;
-
-    font-weight: 700;
-
-    margin-bottom: 9px;
-
+    font-size: 17px;
+    margin-bottom: 8px;
 }
-
-
 
 .info-card p {
-
-    color: #555148;
-
-    font-size: 12px;
-
-    font-weight: 600;
-
-    margin-bottom: 5px;
-
+    color: var(--text);
+    font-size: 13px;
 }
 
-
-
-.info-card > span {
-
+.info-card span {
+    display: block;
     color: var(--muted);
-
     font-size: 11px;
-
+    margin-top: 8px;
 }
 
-
-
-/* ===== Call to Action ===== */
-
+/* Home CTA */
 .cta-section {
-
-    margin: 0 8% 80px;
-
-    padding: 45px;
-
-    border: 1px solid #f5e3d1;
-
-    border-radius: 20px;
-
-    background: linear-gradient(135deg, #fff0df, #fff7ee);
-
+    margin: 80px auto;
+    width: 84%;
+    padding: 55px;
+    background: linear-gradient(120deg, #d95d35, #f18b4e);
+    color: var(--white);
+    border-radius: 25px;
     display: flex;
-
-    align-items: center;
-
     justify-content: space-between;
-
+    align-items: center;
     gap: 25px;
-
 }
 
-
+.cta-section .section-label {
+    background: rgba(255, 255, 255, 0.18);
+    color: var(--white);
+}
 
 .cta-section h2 {
-
-    font-size: clamp(25px, 3vw, 34px);
-
+    font-size: clamp(25px, 3vw, 35px);
+    margin-bottom: 10px;
 }
-
-
 
 .cta-section p {
-
-    color: var(--muted);
-
-    font-size: 12px;
-
-    margin-top: 12px;
-
-}
-
-
-
-/* ===== Beautiful Footer ===== */
-
-.footer {
-
-    position: relative;
-
-    overflow: hidden;
-
-    padding: 55px 8% 22px;
-
-    text-align: center;
-
-    background: #292820;
-
-    color: var(--white);
-
-    border-top: 4px solid var(--primary);
-
-}
-
-
-
-/* Decorative footer glow */
-
-.footer::before {
-
-    content: "";
-
-    position: absolute;
-
-    top: -100px;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    width: 350px;
-
-    height: 180px;
-
-    background: rgba(217, 93, 53, 0.12);
-
-    filter: blur(70px);
-
-    border-radius: 50%;
-
-    pointer-events: none;
-
-}
-
-
-
-.footer .logo {
-
-    position: relative;
-
-    justify-content: center;
-
-    font-size: 28px;
-
-    letter-spacing: -1px;
-
-}
-
-
-
-.footer > p {
-
-    position: relative;
-
-    max-width: 450px;
-
-    margin: 14px auto 27px;
-
-    color: #c8c5bd;
-
-    font-size: 12px;
-
-    line-height: 1.9;
-
-}
-
-
-
-/* Footer Navigation */
-
-.footer-links {
-
-    position: relative;
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    justify-content: center;
-
-    align-items: center;
-
-    gap: 12px 30px;
-
-    margin-bottom: 32px;
-
-}
-
-
-
-.footer-links a {
-
-    position: relative;
-
-    color: #e6e1d8;
-
-    font-size: 12px;
-
-    font-weight: 500;
-
-    transition: color 0.3s ease;
-
-}
-
-
-
-.footer-links a:hover {
-
-    color: #ff9b75;
-
-}
-
-
-
-/* Footer link underline */
-
-.footer-links a::after {
-
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-
-    bottom: -5px;
-
-    width: 0;
-
-    height: 1px;
-
-    background: #ff9b75;
-
-    transition: width 0.3s ease;
-
-}
-
-
-
-.footer-links a:hover::after {
-
-    width: 100%;
-
-}
-
-
-
-/* Copyright */
-
-.copyright {
-
-    position: relative;
-
-    padding-top: 21px;
-
-    border-top: 1px solid #48463e;
-
-    color: #aaa69e;
-
-    font-size: 11px;
-
-    letter-spacing: 0.3px;
-
-}
-
-
-
-/* ===== Responsive Design ===== */
-
-@media (max-width: 1100px) {
-
-    .navbar {
-
-        align-items: center;
-
-        flex-direction: column;
-
-        gap: 12px;
-
-        padding: 18px 5%;
-
-    }
-
-
-
-    .nav-links {
-
-        justify-content: center;
-
-        gap: 12px 20px;
-
-    }
-
-
-
-    .hero {
-
-        padding: 60px 6%;
-
-        gap: 35px;
-
-    }
-
-}
-
-
-
-@media (max-width: 760px) {
-
-    .navbar {
-
-        padding: 18px 5%;
-
-    }
-
-
-
-    .nav-links {
-
-        gap: 10px 17px;
-
-    }
-
-
-
-    .nav-links a {
-
-        font-size: 11px;
-
-    }
-
-
-
-    .nav-links .login-btn {
-
-        padding: 9px 16px;
-
-        min-height: 38px;
-
-    }
-
-
-
-    .hero {
-
-        grid-template-columns: 1fr;
-
-        padding: 55px 6%;
-
-    }
-
-
-
-    .hero h1 {
-
-        font-size: clamp(40px, 10vw, 58px);
-
-    }
-
-
-
-    .hero-image {
-
-        min-height: 360px;
-
-        margin: 10px 10px 10px 0;
-
-    }
-
-
-
-    .image-badge {
-
-        left: 12px;
-
-    }
-
-
-
-    .about-section {
-
-        padding: 65px 6%;
-
-    }
-
-
-
-    .info-grid {
-
-        grid-template-columns: 1fr;
-
-        gap: 17px;
-
-    }
-
-
-
-    .cta-section {
-
-        margin: 0 6% 55px;
-
-        padding: 30px 24px;
-
-        align-items: flex-start;
-
-        flex-direction: column;
-
-    }
-
-
-
-    .footer {
-
-        padding: 45px 6% 20px;
-
-    }
-
-
-
-    .footer-links {
-
-        gap: 15px 22px;
-
-    }
-
-}
-
-
-
-@media (max-width: 420px) {
-
-    .logo {
-
-        font-size: 22px;
-
-    }
-
-
-
-    .nav-links {
-
-        gap: 8px 13px;
-
-    }
-
-
-
-    .nav-links a {
-
-        font-size: 10px;
-
-    }
-
-
-
-    .hero-features {
-
-        gap: 17px;
-
-    }
-
-
-
-    .hero-image {
-
-        min-height: 290px;
-
-    }
-
-
-
-    .hero-buttons a {
-
-        width: 100%;
-
-        text-align: center;
-
-    }
-
-
-
-    .footer .logo {
-
-        font-size: 24px;
-
-    }
-
-
-
-    .footer-links {
-
-        gap: 14px 18px;
-
-    }
-
-}
-
-
-
-
-
-/* Campus Bites Feedback Page */
-
-
-/* Campus Bites - Deals Page */
-
-
-
-
-.deals-page {
-
-    --deal-orange: #e97832;
-
-    --deal-dark: #24362c;
-
-    --deal-cream: #fff5e8;
-
-    --deal-muted: #68736b;
-
-    margin: 0;
-
-    color: var(--deal-dark);
-
-    background: #fffdf9;
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    line-height: 1.7;
-
-}
-
-
-
-.deals-page * {
-
-    box-sizing: border-box;
-
-}
-
-
-
-.deals-page a {
-
-    transition: 0.2s ease;
-
-}
-
-
-
-.deals-page .deals-container {
-
-    width: min(1100px, 90%);
-
-    margin-inline: auto;
-
-}
-
-
-
-.deals-page .site-header {
-
-    background: white;
-
-    border-bottom: 1px solid #eee6db;
-
-}
-
-
-
-.deals-page .header-content {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 20px;
-
-    min-height: 78px;
-
-}
-
-
-
-.deals-page .brand {
-
-    color: var(--deal-dark);
-
-    font-size: 1.7rem;
-
-    font-weight: 800;
-
-    text-decoration: none;
-
-    white-space: nowrap;
-
-}
-
-
-
-.deals-page .brand span {
-
-    color: var(--deal-orange);
-
-}
-
-
-
-.deals-page .main-nav {
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    justify-content: flex-end;
-
-    gap: 18px;
-
-}
-
-
-
-.deals-page .main-nav a {
-
-    color: var(--deal-dark);
-
-    font-size: 0.9rem;
-
-    font-weight: 700;
-
-    text-decoration: none;
-
-}
-
-
-
-.deals-page .main-nav a:hover,
-
-.deals-page .main-nav a[aria-current="page"] {
-
-    color: var(--deal-orange);
-
-}
-
-
-
-.deals-page .deals-hero {
-
-    padding: 85px 0;
-
-    text-align: center;
-
-    background: linear-gradient(135deg, #fff5e8, #ffe3c4);
-
-}
-
-
-
-.deals-page .deals-eyebrow {
-
-    color: #b9511b;
-
-    font-size: 0.75rem;
-
-    font-weight: 800;
-
-    letter-spacing: 2px;
-
-}
-
-
-
-.deals-page .deals-hero h1 {
-
-    margin: 12px 0;
-
-    font-size: clamp(2.2rem, 5vw, 4rem);
-
-    line-height: 1.2;
-
-}
-
-
-
-.deals-page .deals-hero h1 span {
-
-    color: var(--deal-orange);
-
-}
-
-
-
-.deals-page .deals-hero .deals-container > p:not(.deals-eyebrow) {
-
-    max-width: 620px;
-
-    margin: 18px auto 28px;
-
-    color: var(--deal-muted);
-
-}
-
-
-
-.deals-page .deals-button {
-
-    display: inline-block;
-
-    padding: 12px 23px;
-
-    border: 2px solid var(--deal-orange);
-
-    border-radius: 8px;
-
-    background: var(--deal-orange);
-
-    color: white;
-
-    font-weight: 700;
-
-    text-decoration: none;
-
-}
-
-
-
-.deals-page .deals-button:hover {
-
-    background: #c65c22;
-
-    border-color: #c65c22;
-
-}
-
-
-
-.deals-page .daily-special {
-
-    display: grid;
-
-    grid-template-columns: 1.2fr 0.8fr;
-
-    align-items: center;
-
-    gap: 35px;
-
-    margin-top: 55px;
-
-    margin-bottom: 55px;
-
-    padding: 35px;
-
-    border: 1px solid #eee4d8;
-
-    border-radius: 18px;
-
-    background: white;
-
-    box-shadow: 0 10px 30px rgb(0 0 0 / 5%);
-
-}
-
-
-
-.deals-page .daily-special h2,
-
-.deals-page .deals-heading h2 {
-
-    font-size: clamp(1.8rem, 3vw, 2.5rem);
-
-    line-height: 1.25;
-
-}
-
-
-
-.deals-page .special-content > p:not(.deals-eyebrow) {
-
-    color: var(--deal-muted);
-
-}
-
-
-
-.deals-page .deals-price {
-
-    color: #c45a22;
-
-    font-size: 1.8rem;
-
-    font-weight: 800;
-
-}
-
-
-
-.deals-page .special-visual {
-
-    display: flex;
-
-    min-height: 230px;
-
-    align-items: center;
-
-    justify-content: center;
-
-    flex-wrap: wrap;
-
-    gap: 10px;
-
-    padding: 20px;
-
-    border-radius: 15px;
-
-    background: var(--deal-cream);
-
-}
-
-
-
-.deals-page .special-visual span {
-
-    font-size: clamp(2.8rem, 5vw, 4.5rem);
-
-}
-
-
-
-.deals-page .combo-section {
-
-    padding: 65px 0;
-
-    background: #fff8ef;
-
-}
-
-
-
-.deals-page .deals-heading {
-
-    margin-bottom: 35px;
-
-    text-align: center;
-
-}
-
-
-
-.deals-page .deals-heading > p:last-child {
-
-    color: var(--deal-muted);
-
-}
-
-
-
-.deals-page .deals-grid {
-
-    display: grid;
-
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-
-    gap: 24px;
-
-}
-
-
-
-.deals-page .deal-card {
-
-    position: relative;
-
-    padding: 28px;
-
-    border: 1px solid #eee2d5;
-
-    border-radius: 15px;
-
-    background: white;
-
-    box-shadow: 0 5px 20px rgb(0 0 0 / 4%);
-
-}
-
-
-
-.deals-page .deal-icon {
-
-    display: grid;
-
-    width: 62px;
-
-    height: 62px;
-
-    place-items: center;
-
-    border-radius: 13px;
-
-    background: var(--deal-cream);
-
-    font-size: 2rem;
-
-}
-
-
-
-.deals-page .deal-card h3 {
-
-    margin-bottom: 8px;
-
-    font-size: 1.45rem;
-
-}
-
-
-
-.deals-page .deal-card > p:not(.deals-price) {
-
-    color: var(--deal-muted);
-
-}
-
-
-
-.deals-page .deal-card > a {
-
-    color: #b9511b;
-
-    font-weight: 700;
-
-    text-decoration: none;
-
-}
-
-
-
-.deals-page .deal-card > a:hover {
-
-    text-decoration: underline;
-
-}
-
-
-
-.deals-page .featured-deal {
-
-    border: 2px solid var(--deal-orange);
-
-}
-
-
-
-.deals-page .deal-tag {
-
-    display: inline-block;
-
-    margin-bottom: 10px;
-
-    padding: 4px 9px;
-
-    border-radius: 5px;
-
-    background: #fff0df;
-
-    color: #a84913;
-
-    font-size: 0.68rem;
-
-    font-weight: 800;
-
-}
-
-
-
-.deals-page .deals-cta {
-
-    padding: 60px 0;
-
-    background: var(--deal-dark);
-
-    color: white;
-
-    text-align: center;
-
-}
-
-
-
-.deals-page .deals-cta h2 {
-
-    font-size: clamp(1.7rem, 4vw, 2.5rem);
-
-}
-
-
-
-.deals-page .deals-cta p {
-
-    margin-bottom: 25px;
-
-    color: #e4e9e5;
-
-}
-
-
-
-.deals-page .deals-footer {
-
-    padding: 24px 0;
-
-    background: #19251e;
-
-    color: #e8ede8;
-
-    text-align: center;
-
-    font-size: 0.9rem;
-
-}
-
-
-
-.deals-page .deals-footer a {
-
-    color: #ffd2ae;
-
-}
-
-
-
-.deals-page .deals-note {
-
-    color: #c5cec7;
-
-    font-size: 0.8rem;
-
-}
-
-
-
-/* Deals Page responsive design */
-
-@media (max-width: 768px) {
-
-    .deals-page .header-content {
-
-        flex-direction: column;
-
-        justify-content: center;
-
-        padding: 15px 0;
-
-    }
-
-
-
-    .deals-page .main-nav {
-
-        justify-content: center;
-
-        gap: 10px 15px;
-
-    }
-
-
-
-    .deals-page .deals-hero {
-
-        padding: 55px 0;
-
-    }
-
-
-
-    .deals-page .daily-special {
-
-        grid-template-columns: 1fr;
-
-        padding: 24px;
-
-    }
-
-
-
-    .deals-page .special-visual {
-
-        min-height: 170px;
-
-    }
-
-
-
-    .deals-page .deals-grid {
-
-        grid-template-columns: 1fr;
-
-    }
-
-
-
-    .deals-page .combo-section {
-
-        padding: 45px 0;
-
-    }
-
-}
-
-
-
-@media (max-width: 420px) {
-
-    .deals-page .deals-container {
-
-        width: 92%;
-
-    }
-
-
-
-    .deals-page .main-nav {
-
-        gap: 8px 11px;
-
-    }
-
-
-
-    .deals-page .main-nav a {
-
-        font-size: 0.82rem;
-
-    }
-
-
-
-    .deals-page .daily-special,
-
-    .deals-page .deal-card {
-
-        padding: 20px;
-
-    }
-
-}
-
-
-
-/* How to Order Page */
-
-
-
-.order-page {
-
-    padding-top: 30px;
-
-    padding-bottom: 40px;
-
-}
-
-
-
-.order-hero {
-
-    text-align: center;
-
-    padding: 35px 20px;
-
-    margin-bottom: 30px;
-
-    background-color: #fff3e0;
-
-    border-radius: 12px;
-
-}
-
-
-
-.order-hero h2 {
-
-    color: #8b4513;
-
-    margin-bottom: 12px;
-
-}
-
-
-
-.order-steps,
-
-.order-guidelines {
-
-    margin-bottom: 35px;
-
-}
-
-
-
-.order-steps > h2,
-
-.order-guidelines > h2,
-
-.order-help h2 {
-
-    color: #8b4513;
-
-    margin-bottom: 20px;
-
-}
-
-
-
-.order-card,
-
-.guideline-card {
-
-    background-color: #ffffff;
-
-    padding: 22px;
-
-    margin-bottom: 18px;
-
-    border: 1px solid #eadfd2;
-
-    border-radius: 10px;
-
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
-
-}
-
-
-
-.order-card h3,
-
-.guideline-card h3 {
-
-    color: #a0522d;
-
-    margin-bottom: 10px;
-
-}
-
-
-
-.guideline-card ul {
-
-    padding-left: 22px;
-
+    font-size: 13px;
+    color: #fff1e8;
 }
 
-
-
-.guideline-card li {
-
-    margin-bottom: 10px;
-
-    line-height: 1.6;
-
-}
-
-
-
-.order-help {
-
-    text-align: center;
-
-    padding: 30px 20px;
-
-    background-color: #f7f7f7;
-
-    border-radius: 12px;
-
-}
-
-
-
-.order-button {
-
-    display: inline-block;
-
-    margin-top: 15px;
-
-    padding: 12px 22px;
-
-    background-color: #8b4513;
-
-    color: white;
-
-    text-decoration: none;
-
-    border-radius: 6px;
-
-}
-
-
-
-.order-button:hover {
-
-    background-color: #65320e;
-
+.cta-section .primary-btn {
+    background: var(--white);
+    color: var(--primary-dark);
+    flex-shrink: 0;
 }
-
-
-
-/* Order Page responsive design */
-
-@media (max-width: 768px) {
-
-    .order-page {
-
-        padding: 20px 14px;
-
-    }
-
-
-
-    .order-hero {
-
-        padding: 25px 15px;
-
-    }
-
-
-
-    .order-card,
-
-    .guideline-card {
-
-        padding: 16px;
-
-    }
-
-
-
-    .order-button {
-
-        display: block;
-
-        text-align: center;
-
-    }
-
-}
-
-
-
-
-
-/* ===== Campus Bites Menu Page ===== */
-
-
 
+/* ==================== 7. MENU PAGE ==================== */
 .menu-hero {
-
-    padding: 65px 20px;
-
+    padding: 75px 0;
     text-align: center;
-
-    background: #fbf0e5;
-
+    background: linear-gradient(135deg, #fff0e5, #ffe0c9);
 }
-
-
 
 .menu-hero .eyebrow {
-
-    color: #d88b19;
-
-    font-weight: 700;
-
+    color: var(--primary);
     text-transform: uppercase;
-
+    font-size: 12px;
+    font-weight: 700;
     letter-spacing: 2px;
-
     margin-bottom: 10px;
-
 }
-
-
 
 .menu-hero h1 {
-
-    color: #15334b;
-
-    font-size: clamp(2.5rem, 5vw, 3.8rem);
-
-    margin-bottom: 12px;
-
+    font-size: 48px;
+    color: var(--dark);
 }
 
-
-
-.menu-hero p {
-
-    color: #506174;
-
+.menu-hero p:last-child {
+    color: var(--text);
+    font-size: 14px;
 }
-
-
 
 .menu-section {
-
+    padding-top: 65px;
+    padding-bottom: 80px;
     display: grid;
-
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-
-    gap: 28px;
-
-    padding-top: 35px;
-
-    padding-bottom: 45px;
-
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
 }
-
-
 
 .menu-card {
-
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
     overflow: hidden;
-
-    background: #ffffff;
-
-    border: 1px solid #eeeeee;
-
-    border-radius: 14px;
-
-    box-shadow: 0 4px 14px rgba(25, 45, 65, 0.07);
-
+    box-shadow: var(--shadow);
+    transition: var(--transition);
 }
 
-
+.menu-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+}
 
 .category-heading {
-
-    min-height: 135px;
-
-    padding: 25px;
-
+    padding: 25px 28px;
     display: flex;
-
-    align-items: center;
-
     justify-content: space-between;
-
-    gap: 15px;
-
+    align-items: center;
+    background: var(--primary-light);
 }
-
-
 
 .category-heading h2 {
-
-    color: #15334b;
-
-    font-size: 1.5rem;
-
-    margin-bottom: 8px;
-
+    font-size: 22px;
+    margin-bottom: 4px;
 }
-
-
 
 .category-heading p {
-
-    color: #354a5d;
-
-    line-height: 1.6;
-
+    font-size: 12px;
+    color: var(--text);
 }
-
-
 
 .category-icon {
-
-    font-size: 3rem;
-
-    flex-shrink: 0;
-
+    font-size: 38px;
 }
 
-
-
-.breakfast {
-
-    background: #ffedc5;
-
+.category-heading.breakfast {
+    background: #fff3d9;
 }
 
-
-
-.fast-food {
-
-    background: #ffdddd;
-
+.category-heading.fast-food {
+    background: #ffebe3;
 }
 
-
-
-.main-course {
-
-    background: #dff1df;
-
+.category-heading.main-course {
+    background: #eaf5e7;
 }
 
-
-
-.beverages {
-
-    background: #e9e2ff;
-
+.category-heading.beverages {
+    background: #e9f3ff;
 }
-
-
 
 .menu-items {
-
-    padding: 5px 24px;
-
+    padding: 10px 27px;
 }
-
-
 
 .menu-item {
-
     display: flex;
-
     justify-content: space-between;
-
-    align-items: flex-start;
-
-    gap: 18px;
-
-    padding: 22px 0;
-
-    border-bottom: 1px solid #e7ebef;
-
+    align-items: center;
+    gap: 15px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
 }
-
-
 
 .menu-item:last-child {
-
     border-bottom: none;
-
 }
-
-
 
 .menu-item h3 {
-
-    color: #19354e;
-
-    font-size: 1rem;
-
-    margin-bottom: 6px;
-
+    font-size: 14px;
+    margin-bottom: 5px;
 }
-
-
 
 .menu-item p {
-
-    color: #63758a;
-
-    font-size: 0.9rem;
-
-    line-height: 1.6;
-
+    font-size: 11px;
+    color: var(--muted);
 }
-
-
 
 .menu-item strong {
-
-    color: #15334b;
-
+    color: var(--primary);
+    font-size: 13px;
     white-space: nowrap;
-
-    font-size: 0.95rem;
-
 }
 
-
-
-/* ===== Footer ===== */
-
-
-
-.site-footer {
-
-    background: #15334b;
-
-    color: #ffffff;
-
-    padding-top: 35px;
-
+/* ==================== 8. DEALS PAGE ==================== */
+.deals-page {
+    background: var(--cream);
 }
 
+.deals-hero {
+    padding: 100px 0;
+    background: linear-gradient(120deg, #fff0e5, #ffe0c9);
+    text-align: center;
+}
 
+.deals-eyebrow {
+    color: var(--primary);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
 
-.footer-content {
+.deals-hero h1 {
+    font-size: clamp(38px, 5vw, 55px);
+    line-height: 1.2;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
 
+.deals-hero h1 span {
+    color: var(--primary);
+}
+
+.deals-hero .deals-container > p:not(.deals-eyebrow) {
+    max-width: 600px;
+    margin: 0 auto 30px;
+    color: var(--text);
+    font-size: 14px;
+}
+
+.daily-special {
+    margin-top: 65px;
+    margin-bottom: 65px;
+    padding: 45px;
     display: grid;
-
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-
-    gap: 30px;
-
-    padding-bottom: 30px;
-
+    grid-template-columns: 1fr 0.8fr;
+    align-items: center;
+    gap: 40px;
+    background: var(--white);
+    border-radius: 25px;
+    box-shadow: var(--shadow);
 }
 
-
-
-.footer-logo {
-
-    color: #ffffff;
-
+.special-content h2 {
+    font-size: 30px;
+    margin-bottom: 15px;
 }
 
-
-
-.footer-logo span,
-
-.logo span {
-
-    color: #f5a623;
-
+.special-content > p:not(.deals-eyebrow):not(.deals-price) {
+    color: var(--text);
+    font-size: 14px;
+    margin-bottom: 20px;
 }
 
+.deals-price {
+    color: var(--primary);
+    font-size: 25px;
+    font-weight: 800;
+    margin: 15px 0 20px;
+}
 
+.special-visual {
+    min-height: 240px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #ffe2b8, #f7a76c);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    overflow: hidden;
+}
 
-.footer-content h3 {
+.special-visual span {
+    font-size: clamp(45px, 6vw, 75px);
+    filter: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.12));
+    transition: var(--transition);
+}
 
+.special-visual span:hover {
+    transform: translateY(-10px) rotate(8deg);
+}
+
+.combo-section {
+    padding: 85px 0;
+    background: #fff5ed;
+}
+
+.deals-heading {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.deals-heading > p:last-child {
+    color: var(--text);
+    font-size: 14px;
+}
+
+.deals-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.deal-card {
+    position: relative;
+    padding: 30px 22px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.deal-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+}
+
+.deal-icon {
+    width: 70px;
+    height: 70px;
+    display: grid;
+    place-items: center;
+    background: var(--primary-light);
+    border-radius: 50%;
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.deal-card h3 {
+    font-size: 17px;
     margin-bottom: 10px;
-
-    font-size: 1rem;
-
 }
 
-
-
-.footer-content p {
-
-    color: #e1e8ef;
-
-    font-size: 0.9rem;
-
-    line-height: 1.8;
-
+.deal-card > p:not(.deals-price) {
+    color: var(--text);
+    font-size: 12px;
+    min-height: 60px;
 }
 
+.deal-card .deals-price {
+    font-size: 22px;
+}
 
+.deal-card > a {
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.deal-card > a:hover {
+    color: var(--primary-dark);
+}
+
+.featured-deal {
+    border: 2px solid var(--primary);
+}
+
+.deal-tag {
+    position: absolute;
+    top: 15px;
+    right: 12px;
+    background: var(--primary);
+    color: var(--white);
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 8px;
+    font-weight: 700;
+}
+
+.deals-cta {
+    padding: 80px 0;
+    text-align: center;
+    background: linear-gradient(120deg, #d95d35, #f18b4e);
+    color: var(--white);
+}
+
+.deals-cta h2 {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.deals-cta p {
+    font-size: 14px;
+    margin-bottom: 25px;
+    color: #fff1e8;
+}
+
+.deals-cta .deals-button {
+    background: var(--white);
+    color: var(--primary-dark);
+}
+
+.deals-cta .deals-button:hover {
+    background: var(--cream);
+}
+
+/* ==================== 9. ORDER PAGE ==================== */
+.order-page {
+    padding-bottom: 80px;
+}
+
+.order-hero {
+    margin-top: 50px;
+    padding: 60px 30px;
+    background: linear-gradient(135deg, #fff0e5, #ffe0c9);
+    border-radius: 22px;
+    text-align: center;
+}
+
+.order-hero h2 {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.order-hero p {
+    max-width: 650px;
+    margin: auto;
+    color: var(--text);
+    font-size: 14px;
+}
+
+.order-steps,
+.order-guidelines {
+    margin-top: 65px;
+}
+
+.order-steps > h2,
+.order-guidelines > h2 {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.order-card,
+.guideline-card {
+    background: var(--white);
+    padding: 28px 32px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.order-card:hover,
+.guideline-card:hover {
+    transform: translateY(-4px);
+    border-color: #f2b39a;
+}
+
+.order-card h3,
+.guideline-card h3 {
+    font-size: 17px;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.order-card p,
+.guideline-card p {
+    font-size: 13px;
+    color: var(--text);
+}
+
+.order-card a,
+.guideline-card a,
+.order-help a:not(.order-button) {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.order-card a:hover,
+.guideline-card a:hover {
+    text-decoration: underline;
+}
+
+.guideline-card ul {
+    padding-left: 22px;
+    color: var(--text);
+    font-size: 13px;
+}
+
+.guideline-card li {
+    margin-bottom: 9px;
+}
+
+.order-help {
+    margin-top: 65px;
+    padding: 50px 30px;
+    text-align: center;
+    background: #fff0e5;
+    border-radius: 22px;
+}
+
+.order-help h2 {
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.order-help p {
+    color: var(--text);
+    font-size: 13px;
+    margin-bottom: 25px;
+}
+
+/* ==================== 10. FEEDBACK PAGE ==================== */
+body:not(.deals-page):has(.contact-section) {
+    background: var(--cream);
+}
+
+/* Feedback page uses the same shared .navbar as every other page. */
+
+/* Feedback main layout */
+body:has(.contact-section) main.container {
+    padding-top: 60px;
+    padding-bottom: 70px;
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    align-items: start;
+    gap: 30px;
+}
+
+.contact-section,
+.feedback-section {
+    padding: 35px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.contact-section h2,
+.feedback-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.contact-section p {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--text);
+}
+
+.contact-section p:last-child {
+    border-bottom: none;
+}
+
+.contact-section strong {
+    color: var(--dark);
+}
+
+.feedback-section > p {
+    font-size: 13px;
+    color: var(--text);
+    margin-bottom: 25px;
+}
+
+/* Feedback Form */
+.feedback-section form {
+    display: flex;
+    flex-direction: column;
+}
+
+.feedback-section label {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--dark);
+}
+
+.feedback-section input,
+.feedback-section textarea {
+    width: 100%;
+    padding: 13px 15px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #fffdfa;
+    outline: none;
+    font-size: 13px;
+    color: var(--dark);
+    transition: var(--transition);
+}
+
+.feedback-section textarea {
+    resize: vertical;
+    min-height: 130px;
+}
+
+.feedback-section input:focus,
+.feedback-section textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(230, 107, 61, 0.12);
+}
+
+.feedback-section input::placeholder,
+.feedback-section textarea::placeholder {
+    color: #aaa39b;
+}
+
+.feedback-section button {
+    padding: 14px 22px;
+    border: none;
+    border-radius: 30px;
+    background: var(--primary);
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+.feedback-section button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-3px);
+}
+
+/* ==================== 11. COMMON FOOTERS ==================== */
+.footer,
+.site-footer,
+.deals-footer {
+    background: #29251f;
+    color: var(--white);
+    padding: 50px 8% 25px;
+    text-align: center;
+}
+
+.footer .logo,
+.footer .footer-logo {
+    color: var(--white);
+}
+
+.footer > p {
+    color: #c5bdb5;
+    font-size: 12px;
+    margin-top: 12px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin: 25px 0;
+}
+
+.footer-links a {
+    color: #e4dcd4;
+    font-size: 12px;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--secondary);
+}
 
 .copyright {
-
-    text-align: center;
-
-    padding: 18px 0;
-
-    border-top: 1px solid rgba(255, 255, 255, 0.25);
-
-    font-size: 0.85rem;
-
+    padding-top: 20px;
+    margin-top: 20px;
+    border-top: 1px solid #494139;
+    color: #aaa39b;
+    font-size: 11px;
 }
 
+/* Menu and Order footer */
+.site-footer {
+    padding: 45px 5% 20px;
+}
 
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+    text-align: left;
+    padding-bottom: 30px;
+}
 
-/* ===== Responsive Design ===== */
+.footer-content h3 {
+    color: var(--secondary);
+    font-size: 14px;
+    margin-bottom: 12px;
+}
 
+.footer-content p {
+    color: #d2cbc3;
+    font-size: 11px;
+    margin-bottom: 5px;
+}
 
+.site-footer .footer-logo {
+    display: inline-block;
+    margin-bottom: 10px;
+}
 
-@media (max-width: 768px) {
+.site-footer .copyright {
+    margin-top: 15px;
+}
+
+/* Deals footer */
+.deals-footer {
+    padding: 35px 5%;
+}
+
+.deals-footer p {
+    color: #d2cbc3;
+    font-size: 11px;
+    margin-bottom: 8px;
+}
+
+.deals-footer a {
+    color: var(--secondary);
+}
+
+.deals-footer a:hover {
+    text-decoration: underline;
+}
+
+.deals-footer .deals-note {
+    color: #928a80;
+    margin-top: 15px;
+}
+
+/* ==================== 12. ANIMATIONS ==================== */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================== 13. TABLET RESPONSIVENESS ==================== */
+@media (max-width: 1000px) {
+    .nav-links {
+        gap: 15px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .hero {
+        gap: 30px;
+        padding: 65px 6%;
+    }
+
+    .deals-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 
     .menu-section {
-
-        grid-template-columns: 1fr;
-
+        gap: 20px;
     }
 
+    .daily-special {
+        padding: 30px;
+    }
+}
 
-
-    .footer-content {
-
-        grid-template-columns: 1fr;
-
-        gap: 22px;
-
+/* ==================== 14. MOBILE RESPONSIVENESS ==================== */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        justify-content: center;
+        padding: 20px 5%;
+        gap: 18px;
     }
 
+    .navbar .nav-links {
+        justify-content: center;
+        gap: 14px 20px;
+    }
 
+    .navbar .nav-links a {
+        font-size: 11px;
+    }
+
+    .navbar .nav-links .login-btn {
+        padding: 8px 16px;
+    }
+
+    /* Home */
+    .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 60px 6%;
+    }
+
+    .hero-content {
+        margin: auto;
+    }
+
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-buttons,
+    .hero-features {
+        justify-content: center;
+    }
+
+    .hero-image {
+        min-height: 300px;
+        width: 100%;
+        max-width: 450px;
+        margin: 0 auto;
+    }
+
+    .about-section {
+        padding: 70px 6%;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+        max-width: 450px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .cta-section {
+        width: 90%;
+        padding: 35px 25px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* Menu */
+    .menu-section {
+        grid-template-columns: 1fr;
+    }
 
     .menu-hero {
-
-        padding: 45px 15px;
-
+        padding: 55px 0;
     }
 
+    .menu-hero h1 {
+        font-size: 38px;
+    }
+
+    /* Deals */
+    .deals-hero {
+        padding: 75px 0;
+    }
+
+    .daily-special {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 30px 22px;
+    }
+
+    .special-visual {
+        min-height: 200px;
+    }
+
+    .combo-section {
+        padding: 65px 0;
+    }
+
+    .deals-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Order */
+    .order-hero {
+        padding: 45px 20px;
+    }
+
+    .order-hero h2 {
+        font-size: 30px;
+    }
+
+    .order-card,
+    .guideline-card {
+        padding: 23px;
+    }
+
+    /* Feedback */
+    body:has(.contact-section) main.container {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-section,
+    .feedback-section {
+        padding: 28px;
+    }
+
+    /* Footer */
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 25px;
+    }
+}
+
+/* ==================== 15. SMALL MOBILE DEVICES ==================== */
+@media (max-width: 480px) {
+    .navbar .logo,
+    .brand {
+        font-size: 22px;
+    }
+
+    .navbar .nav-links {
+        gap: 12px 15px;
+    }
+
+    .hero {
+        padding: 50px 5%;
+    }
+
+    .hero h1 {
+        font-size: 39px;
+    }
+
+    .hero-description {
+        font-size: 13px;
+    }
+
+    .hero-features {
+        gap: 18px;
+    }
+
+    .hero-image {
+        min-height: 250px;
+    }
+
+    .about-section h2 {
+        font-size: 28px;
+    }
+
+    .cta-section h2 {
+        font-size: 25px;
+    }
+
+    .menu-item {
+        align-items: flex-start;
+    }
+
+    .menu-item h3 {
+        font-size: 12px;
+    }
+
+    .menu-item p {
+        font-size: 10px;
+    }
+
+    .menu-item strong {
+        font-size: 11px;
+    }
+
+    .category-heading {
+        padding: 20px;
+    }
+
+    .category-heading h2 {
+        font-size: 18px;
+    }
+
+    .deals-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .deal-card {
+        padding: 28px;
+    }
+
+    .deals-hero h1 {
+        font-size: 35px;
+    }
+
+    .deals-cta h2 {
+        font-size: 27px;
+    }
+
+    .order-steps > h2,
+    .order-guidelines > h2 {
+        font-size: 23px;
+    }
+
+    .contact-section,
+    .feedback-section {
+        padding: 22px;
+    }
+
+    .footer {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+}
+
+/* ==================== 16. REDUCED MOTION ==================== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
 }
 
 
+/* ==================== 17. SHARED HEADER FINAL OVERRIDES ==================== */
+.navbar .logo {
+    text-decoration: none;
+}
+
+.navbar .nav-links a {
+    white-space: nowrap;
+}
 
 @media (max-width: 480px) {
-
-    .category-heading {
-
-        padding: 20px;
-
+    .navbar {
+        padding-left: 4%;
+        padding-right: 4%;
     }
 
-
-
-    .menu-items {
-
-        padding: 5px 18px;
-
+    .navbar .nav-links {
+        column-gap: 12px;
+        row-gap: 14px;
     }
-
-
-
-    .menu-item {
-
-        gap: 10px;
-
-    }
-
-
-
-    .menu-item h3 {
-
-        font-size: 0.92rem;
-
-    }
-
-
-
-    .menu-item p {
-
-        font-size: 0.82rem;
-
-    }
-
-
-
-    .menu-item strong {
-
-        font-size: 0.82rem;
-
-    }
-
 }
